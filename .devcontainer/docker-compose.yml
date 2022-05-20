@@ -1,0 +1,37 @@
+version: "3"
+services:
+  app:
+    build: 
+      context: "."
+    tty: true
+    ports:
+      - 9000:9000
+    volumes:
+      - ../:/workspace/demo-remote-container
+    environment:
+      DB_HOST: db
+
+  db:
+    image: mysql/mysql-server:5.7
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_DATABASE: sample
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      TZ: 'Asia/Tokyo'
+      MYSQL_TCP_PORT: 3306
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - 8080:80
+    depends_on:
+      - database
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOSTS=database
+      - PMA_USER=user
+      - PMA_PASSWORD=password

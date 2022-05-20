@@ -1,0 +1,30 @@
+{
+    "name": "Go",
+    "dockerComposeFile": [
+        "./docker-compose.yml"
+    ],
+    "service": "app",
+    "workspaceFolder": "/workspace/demo-remote-container",
+    "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+            "zsh": {
+                "path": "/usr/bin/zsh"
+            }
+        },
+        "go.toolsManagement.checkForUpdates": "local",
+        "go.gopath": "/go",
+        "go.useLanguageServer": true
+    },
+    "extensions": [
+        "golang.Go",
+        "formulahendry.vscode-mysql",
+        "adpyke.vscode-sql-formatter",
+        "eamodio.gitlens",
+        "mhutchie.git-graph",
+        "github.copilot"
+    ],
+    "forwardPorts": [
+        9000, "phpmyadmin:8080"
+    ]
+}
