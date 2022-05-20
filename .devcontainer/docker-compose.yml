@@ -16,7 +16,7 @@ services:
     ports:
       - 3306:3306
     environment:
-      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: sample
       MYSQL_USER: user
       MYSQL_PASSWORD: password
@@ -29,9 +29,9 @@ services:
     ports:
       - 8080:80
     depends_on:
-      - database
+      - db
     environment:
       - PMA_ARBITRARY=1
-      - PMA_HOSTS=database
+      - PMA_HOSTS=db
       - PMA_USER=user
       - PMA_PASSWORD=password
