@@ -1,10 +1,25 @@
 {
+    // jsonにコメントを書く…(jsonc扱い)
+    // 
     "name": "Go",
+
+    // docker-composeを使ってremote-containerを立ち上げる
     "dockerComposeFile": [
         "./docker-compose.yml"
     ],
+    // ターゲットとなるサービス名
     "service": "app",
+
+    // Dockerfileのみの指定も可能
+    // "build": {
+	// 	"dockerfile": "Dockerfile"
+    // },
+    // "runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
+    
+    // コンテナ内で起点となるディレクトリ
     "workspaceFolder": "/workspace/demo-remote-container",
+
+    // コンテナ内のVSCodeの設定
     "settings": {
         "terminal.integrated.defaultProfile.linux": "zsh",
         "terminal.integrated.profiles.linux": {
@@ -16,6 +31,8 @@
         "go.gopath": "/go",
         "go.useLanguageServer": true
     },
+
+    // コンテナ内の拡張機能
     "extensions": [
         "golang.Go",
         "formulahendry.vscode-mysql",
@@ -24,7 +41,9 @@
         "mhutchie.git-graph",
         "github.copilot"
     ],
+
+    // コンテナからローカルに転送したいポート
     "forwardPorts": [
-        9000, "phpmyadmin:8080"
+        "phpmyadmin:8080"
     ]
 }
